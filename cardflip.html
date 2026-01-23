@@ -1,0 +1,57 @@
+<html>
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width" initial-5>
+    <title>Document</title>
+    <style>
+        body{
+            perspective: 900%;
+        }
+        #main{
+            height: 400px;
+            width: 300px;
+            transform-style: preserve-3d;
+            position: relative;
+            margin: 40px auto;
+            /* box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px; */
+            transition: 3s; 
+        } 
+        #main:hover{
+            transform: rotateY(180deg);
+        }
+        #card_a{
+            height: 50%;
+            width: 100%;
+            position: absolute;
+            z-index: 7;
+            backface-visibility: hidden;
+
+        }
+        img{
+            height: 100%;
+            width: 100%;
+        }
+        #card_b{
+            height: 50%;
+            width: 100%;
+            position: absolute;
+            background-color: rebeccapurple;
+            z-index: 3;
+            transform:rotateY(180deg) ;
+            
+        }
+</style>
+    </head>
+    <body>
+        <div> id="main">
+        <div id=" card_a">
+        <img src="https://images.pexels.com/photos/1563256/pexels-photo-1563256.jpeg?cs=srgb&dl=pexels-rickyrecap-1563256.jpg&fm=jpg"/>
+    </div>
+    
+    <div id="card_b">
+        <h1>photograph</h1>
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit ad veritatis at expedita consectetur facere similique impedit obcaecati magni commodi! Sint ullam nam corrupti? Esse modi unde aliquid necessitatibus ab?</p>
+    </div>
+    </div>
+    </body>
+    </html>
