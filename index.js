@@ -1,18 +1,10 @@
-document.querySelector("input")
+//console.log("heheh")
+console.log("kyaa");
+    // let btn=document.querySelector("button")
+        let btn=document.getElementsByClassName("two")
+        let body=document.querySelector("button")                                                                            ("body")
 
-let inp=document.querySelector("input")
-let h3= document.getElementsByClassName("h2")
-let btn=document.querySelector("button")
-console.log(btn,"heheh");
-
-btn.addEventListener("click",function(){
-    console.log("hello");
-    let data=inp.value
-    
-
-})
-
-// inp.addEventListener("input",function(e)){
-//     console.log(e.target.value);
-//     h2.innerText=e.target.value
-// }
+    btn.addEventListener("click",function(){
+        //console.log("hello");
+        body.style.backgroundColor="blue"
+    })
