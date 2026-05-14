@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+
+    <style>
+
+        body{
+            margin: 0;
+            padding: 0;
+            background-color: #1f1f1f;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        .container{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        h1{
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        #winner{
+            color: gold;
+            font-size: 40px;
+            margin-bottom: 20px;
+            height: 50px;
+        }
+
+        .board{
+            display: grid;
+            grid-template-columns: repeat(3,100px);
+            grid-template-rows: repeat(3,100px);
+            gap: 5px;
+            border: 4px solid white;
+            padding: 5px;
+            background-color: black;
+        }
+
+        .cell{
+            width: 100px;
+            height: 100px;
+            background-color: #2dbcf0;
+            border: 2px solid black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2.5em;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button{
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        canvas{
+            position: fixed;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <canvas id="fireworks"></canvas>
+
+    <div class="container">
+
+        <div id="winner"></div>
+
+        <h1>Tic Tac Toe</h1>
+
+        <div class="board">
+
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+
+        </div>
+
+        <button id="restartBtn">Restart Game</button>
+
+    </div>
+
+    <script>
+
+        let boxes = document.querySelectorAll(".cell");
+        let winnerText = document.getElementById("winner");
+        let restartBtn = document.getElementById("restartBtn");
+
+        let turnO = true;
+
+        const winPatterns = [
+            [0,1,2],
+            [3,4,5],
+            [6,7,8],
+            [0,3,6],
+            [1,4,7],
+            [2,5,8],
+            [0,4,8],
+            [2,4,6]
+        ];
+
+        boxes.forEach((box)=>{
+
+            box.addEventListener("click", ()=>{
+
+                if(box.innerHTML != ""){
+                    return;
+                }
+
+                if(turnO){
+                    box.innerHTML = "O";
+                    turnO = false;
+                }
+                else{
+                    box.innerHTML = "X";
+                    turnO = true;
+                }
+
+                checkWinner();
+
+            });
+
+        });
+
+        function checkWinner(){
+
+            let winnerFound = false;
+
+            for(let pattern of winPatterns){
+
+                let pos1 = boxes[pattern[0]].innerHTML;
+                let pos2 = boxes[pattern[1]].innerHTML;
+                let pos3 = boxes[pattern[2]].innerHTML;
+
+                if(pos1 != "" && pos2 != "" && pos3 != ""){
+
+                    if(pos1 === pos2 && pos2 === pos3){
+
+                        winnerFound = true;
+
+                        showWinner(pos1);
+
+                        boxes.forEach((box)=>{
+                            box.style.pointerEvents = "none";
+                        });
+
+                    }
+
+                }
+
+            }
+
+            let filledBoxes = 0;
+
+            boxes.forEach((box)=>{
+                if(box.innerHTML != ""){
+                    filledBoxes++;
+                }
+            });
+
+            if(filledBoxes === 9 && !winnerFound){
+                winnerText.innerHTML = "Match Draw 🤝";
+            }
+
+        }
+
+        function showWinner(winner){
+
+            winnerText.innerHTML = winner + " Wins 🎉";
+
+            startFireworks(winner);
+
+        }
+
+        function startFireworks(winner){
+
+            let canvas = document.getElementById("fireworks");
+            let ctx = canvas.getContext("2d");
+
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            let particles = [];
+
+            for(let i=0; i<150; i++){
+
+                particles.push({
+                    x: canvas.width/2,
+                    y: canvas.height/2,
+                    radius: Math.random()*4+2,
+                    dx: (Math.random()-0.5)*12,
+                    dy: (Math.random()-0.5)*12
+                });
+
+            }
+
+            function animate(){
+
+                ctx.clearRect(0,0,canvas.width,canvas.height);
+
+                ctx.font = "50px Arial";
+                ctx.fillStyle = "gold";
+                ctx.fillText(winner + " Wins!", canvas.width/2 - 140, 100);
+
+                particles.forEach((p)=>{
+
+                    ctx.beginPath();
+                    ctx.arc(p.x,p.y,p.radius,0,Math.PI*2);
+                    ctx.fillStyle = "orange";
+                    ctx.fill();
+
+                    p.x += p.dx;
+                    p.y += p.dy;
+
+                });
+
+                requestAnimationFrame(animate);
+
+            }
+
+            animate();
+
+        }
+
+        restartBtn.addEventListener("click", ()=>{
+
+            boxes.forEach((box)=>{
+                box.innerHTML = "";
+                box.style.pointerEvents = "auto";
+            });
+
+            winnerText.innerHTML = "";
+
+            let canvas = document.getElementById("fireworks");
+            let ctx = canvas.getContext("2d");
+
+            ctx.clearRect(0,0,canvas.width,canvas.height);
+
+            turnO = true;
+
+        });
+
+    </script>
+
+</body>
+</html>
