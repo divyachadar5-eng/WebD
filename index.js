@@ -1,92 +1,56 @@
-// import {a,sum} from './new.js'
-// console.log(a);
-// sum(5,6)
-
-
-//pure function
-// function sum(num){
-//     return num*2
-// }
-// console.log(sum(5));
-// console.log(sum(5));
-
-
-// let count=0
-// function outer(){
-//     count++
-//     return Count
-// }
-// console.log(outer());
-// console.log(outer());
-
-
-
-// function sum(a){
-//     return function(b){
-//         return a+b
-//     }
-// }
-// console.log(sum(5)(6));
-
-
-// function sum(a){
-//     return function(b){
-//         if(b){
-//             return sum(a+b)
-//         }
-//         return a
-//     }
-// }
-// console.log(sum(5)(6)(7)(8)(1)(2)(4)(6)(3));
-
-
-// let arr=[1,2,3,4,5]
-// let nums=[...arr,6,7,8]
-// // let ans=nums.concat(arr)
-// console.log(nums);
 // let obj={
 //     id:1,
-//     name:"divya"
+//     firstName:"divya",
+//     lastName:"chadar",
+//     fullName:function(city,age){
+//         console.log(this.firstName+ this.lastName+city);
+//     }
 // }
-// let data={
-//     ...obj,
-//     age:20
+// //obj.fulName()
+// let userOne={
+//     id:10,
+//     firstName:"chockroch",
+//     lastName:"janta party",
 // }
+// // obj.fullName.call(userOne,"jabalpur")
+// obj.fulName.apply(userOne,["delhi",20])
 
 
 
-// function sum(a,b,c,...nums){
-//     console.log();
-
+// let user1={
+//     name:"divya",
+//     age:22,
+//     address:{
+//         city:"jabalpur"
+//     }
 // }
-// sum(1,2,34,4,5,6,7,8,9,8)
-// if(false){
-//     let a=5
-// }
-// console.log(a);
+// let user2=structuredClone(user1)
+// user2.address.city="bhopal"
+// console.log(user1.address.city);
+// console.log(user2.address.city);
 
 
-// console.log("a");
-
-// new Promise(()=>{
-//     console.log("c");
-// })
-// console.log("b");
+// let arr=[1,2,3,4]
+// console.log(Array.prototype);
 
 
-// let arr=[1,2,3,4,5]
-// let [c,b,a]=arr
-// console.log();
-// // let a=arr[1]
-// let obj={
-//     id:1,
-//     name:"divya"
-// }
-// let obj1={
-//     ...obj,
-//     age:20
-// }
-// let{id,name}=ab
+// let str="js css"
+// console.log(str.length);
+// console.log(str.toLocaleUpperCase());
+// console.log(str.toLocaleLowerCase());
+// console.log(str.trim());
+// console.log(str.includes("s"));
+// console.log(str.indexOf("j"));
+// console.log(str.substring(0,4),"substring");
+// console.log(str.substr(0,4),"substr");
+// console.log(str.split(""));
 
 
-$("h1").css("color","red")
+
+let str="js js js"
+let ans=str.split("").reverse().join("")
+console.log(ans);
+console.log(str.replaceAll("js","html"));
+console.log(str.charAt(0));
+console.log(str.replaceAll("j",""));
+console.log(str.replaceAll("js",""));
