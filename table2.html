@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Timetable</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f9;
+            margin: 0;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            max-width: 900px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #ffffff;
+            text-align: center;
+        }
+
+        th, td {
+            border: 1px solid #b5b5b5;
+            padding: 15px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        /* Header and Day columns styling */
+        th, td:first-child {
+            background-color: #e64a71;
+            color: white;
+        }
+
+        /* Morning sessions columns styling */
+        .morning-session {
+            background-color: #ffffff;
+            color: #333333;
+        }
+
+        /* Lunch break column styling */
+        .lunch-break {
+            background-color: #fcd7e2;
+            color: #d84365;
+            letter-spacing: 3px;
+            font-size: 16px;
+            text-transform: uppercase;
+            width: 40px;
+        }
+
+        /* Afternoon sessions columns styling */
+        .afternoon-session {
+            background-color: #d1ecf1;
+            color: #0c5460;
+        }
+    </style>
+</head>
+<body>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Day</th>
+                <th>10-11</th>
+                <th>11-12</th>
+                <th>12-1</th>
+                <th>1-2</th>
+                <th>2-3</th>
+                <th>3-4</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Monday -->
+            <tr>
+                <td>Mon</td>
+                <td class="morning-session">IWT</td>
+                <td class="morning-session">DBMS</td>
+                <td class="morning-session">OS</td>
+                <td class="lunch-break" rowspan="5">L<br>U<br>N<br>C<br>H</td>
+                <td class="afternoon-session" colspan="2">IWT Lab</td>
+            </tr>
+            <!-- Tuesday -->
+            <tr>
+                <td>Tue</td>
+                <td class="morning-session">DBMS</td>
+                <td class="morning-session">IWT</td>
+                <td class="morning-session">TOC</td>
+                <td class="afternoon-session">OS</td>
+                <td class="afternoon-session">Library</td>
+            </tr>
+            <!-- Wednesday -->
+            <tr>
+                <td>Wed</td>
+                <td class="morning-session">OS</td>
+                <td class="morning-session">TOC</td>
+                <td class="morning-session">IWT</td>
+                <td class="afternoon-session" colspan="2">DBMS Lab</td>
+            </tr>
+            <!-- Thursday -->
+            <tr>
+                <td>Thu</td>
+                <td class="morning-session">TOC</td>
+                <td class="morning-session">OS</td>
+                <td class="morning-session">DBMS</td>
+                <td class="afternoon-session">IWT</td>
+                <td class="afternoon-session">Sports</td>
+            </tr>
+            <!-- Friday -->
+            <tr>
+                <td>Fri</td>
+                <td class="morning-session">IWT</td>
+                <td class="morning-session">TOC</td>
+                <td class="morning-session">OS</td>
+                <td class="afternoon-session" colspan="2">Seminar</td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>
